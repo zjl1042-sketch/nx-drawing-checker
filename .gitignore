@@ -1,0 +1,15 @@
+.scratch/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+work/
+*.prt
+*.stl
+*.step
+*.docx
+*.png
+*.jpg
+*.jpeg
+*.egg-info/
+

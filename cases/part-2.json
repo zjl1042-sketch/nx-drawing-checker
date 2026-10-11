@@ -1,0 +1,190 @@
+{
+  "part": "连杆支架：中央贯通开窗",
+  "units": "mm",
+  "history_requirements": {
+    "solid_bodies": 1,
+    "minimum_features": {
+      "SKETCH": 20,
+      "EXTRUDE": 20
+    },
+    "required_features": [
+      {
+        "type": "EXTRUDE",
+        "name_contains": "上部贯通开窗"
+      },
+      {
+        "type": "EXTRUDE",
+        "name_contains": "下部贯通开窗"
+      }
+    ]
+  },
+  "views": {
+    "section": {
+      "kind": "section",
+      "image": "../work/drawing-02.png",
+      "box": [
+        185,
+        40,
+        560,
+        112
+      ],
+      "note": "纵向剖视，原图未明确标剖切位置；用于核对是否画出底板，贯通按已确认方案检查"
+    },
+    "plan": {
+      "kind": "orthographic",
+      "image": "../work/drawing-02.png",
+      "box": [
+        215,
+        182,
+        520,
+        225
+      ],
+      "note": "中央窗口、轮毂、连接筋和尺寸"
+    },
+    "isometric": {
+      "kind": "isometric",
+      "image": "../work/drawing-02.png",
+      "box": [
+        278,
+        419,
+        398,
+        245
+      ],
+      "note": "辅助核对窗口与外圈连接关系"
+    }
+  },
+  "features": [
+    {
+      "name": "中央上、下开窗",
+      "material": "void",
+      "extent": "through",
+      "evidence": [
+        {
+          "view": "plan",
+          "observation": "轮毂两侧有独立闭合窗口轮廓，左侧径向连接筋将上下区域分开。"
+        },
+        {
+          "view": "section",
+          "observation": "中心剖面标出轮毂和连接区域材料；缺少剖切位置，不足以单独判定上下窗深度。"
+        },
+        {
+          "view": "isometric",
+          "observation": "中央窗口边界与连接筋可见；轴测图可核对口形，但不能单独证明贯通深度。"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "窗口外弧半径",
+          "value": 40,
+          "status": "stated",
+          "view": "plan"
+        },
+        {
+          "name": "轮毂侧边界半径",
+          "value": 21,
+          "status": "stated",
+          "view": "plan"
+        },
+        {
+          "name": "径向筋宽",
+          "value": 6,
+          "status": "estimated",
+          "view": "plan",
+          "reason": "图中未完整标注，按图形比例选取；制造前必须确认。"
+        }
+      ],
+      "checks": [
+        {
+          "name": "上窗贯通",
+          "kind": "clear_line",
+          "start": [
+            125,
+            25,
+            -20
+          ],
+          "end": [
+            125,
+            25,
+            60
+          ]
+        },
+        {
+          "name": "下窗贯通",
+          "kind": "clear_line",
+          "start": [
+            125,
+            -25,
+            -20
+          ],
+          "end": [
+            125,
+            -25,
+            60
+          ]
+        }
+      ],
+      "depth_basis": {
+        "kind": "user_confirmation",
+        "observation": "按用户已确认的中央上下贯通修订方案回归检查。原图没有明确剖切位置，中心剖面可能经过连接筋，不能单独由它证明上下窗是否有底。"
+      }
+    },
+    {
+      "name": "应保留的连接筋、轮毂和外圈",
+      "material": "solid",
+      "evidence": [
+        {
+          "view": "plan",
+          "observation": "窗口周围有连续外圈；左侧保留径向筋；轮毂是实心承载结构。"
+        },
+        {
+          "view": "section",
+          "observation": "剖面线标出轮毂和外圈的材料区域。"
+        }
+      ],
+      "checks": [
+        {
+          "name": "连接筋保留",
+          "kind": "solid_line",
+          "start": [
+            115,
+            0,
+            -20
+          ],
+          "end": [
+            115,
+            0,
+            60
+          ]
+        },
+        {
+          "name": "轮毂保留",
+          "kind": "solid_line",
+          "start": [
+            153,
+            0,
+            -20
+          ],
+          "end": [
+            153,
+            0,
+            60
+          ]
+        },
+        {
+          "name": "外圈保留",
+          "kind": "solid_line",
+          "start": [
+            133,
+            43,
+            -20
+          ],
+          "end": [
+            133,
+            43,
+            60
+          ]
+        }
+      ]
+    }
+  ]
+}

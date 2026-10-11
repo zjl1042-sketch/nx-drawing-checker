@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nx-drawing-checker"
+version = "0.1.0"
+description = "Evidence-led review of mechanical drawings and mesh checks for NX parts"
+requires-python = ">=3.10"
+dependencies = ["Pillow>=10"]
+
+[project.scripts]
+nx-drawing-checker = "nx_drawing_checker:main"
+
+[tool.setuptools]
+py-modules = ["nx_drawing_checker", "nx_preview"]
+

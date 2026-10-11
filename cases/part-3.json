@@ -1,0 +1,331 @@
+{
+  "part": "球面端盖：光滑内腔",
+  "units": "mm",
+  "history_requirements": {
+    "solid_bodies": 1,
+    "minimum_features": {
+      "SKETCH": 2,
+      "EXTRUDE": 3,
+      "SWP104": 2
+    },
+    "required_features": [
+      {
+        "type": "SPHERE",
+        "name_contains": "内壁修正"
+      },
+      {
+        "type": "EXTRUDE",
+        "name_contains": "长圆孔"
+      }
+    ]
+  },
+  "views": {
+    "plan": {
+      "kind": "orthographic",
+      "image": "../work/drawing-03.jpeg",
+      "box": [
+        78,
+        236,
+        360,
+        412
+      ],
+      "note": "接管、立板、安装耳的平面位置"
+    },
+    "isometric": {
+      "kind": "isometric",
+      "image": "../work/drawing-03.jpeg",
+      "box": [
+        510,
+        305,
+        370,
+        255
+      ],
+      "note": "凸台和立板位于外表面"
+    },
+    "front": {
+      "kind": "orthographic",
+      "image": "../work/drawing-03.jpeg",
+      "box": [
+        20,
+        3,
+        434,
+        234
+      ],
+      "note": "正视图：外 R90 实线轮廓、内 R85 虚线轮廓，球心距底面36；原图未给剖面线，不称作正式剖视图"
+    }
+  },
+  "features": [
+    {
+      "name": "R85 球面内腔",
+      "material": "void",
+      "extent": "cavity",
+      "evidence": [
+        {
+          "view": "front",
+          "observation": "R85 内弧连续；外部接管及立板下方没有伸入内腔的额外实体轮廓。"
+        },
+        {
+          "view": "plan",
+          "observation": "用于确定接管与立板方位，检查这些外部特征对应的内腔位置。"
+        },
+        {
+          "view": "isometric",
+          "observation": "接管和立板是球壳外部特征，内部形状仍以正视图中的内轮廓虚线为依据。"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "内球半径",
+          "value": 85,
+          "status": "stated",
+          "view": "front"
+        },
+        {
+          "name": "外球半径",
+          "value": 90,
+          "status": "stated",
+          "view": "front"
+        },
+        {
+          "name": "球心 z",
+          "value": -36,
+          "status": "stated",
+          "view": "front"
+        }
+      ],
+      "checks": [
+        {
+          "name": "内腔没有伸入材料",
+          "kind": "clear_spherical_cap",
+          "center": [
+            0,
+            0,
+            -36
+          ],
+          "radius": 85,
+          "margin": 1,
+          "z_range": [
+            5,
+            41
+          ],
+          "step": 12
+        },
+        {
+          "name": "内壁落在 R85 球面上",
+          "kind": "inner_sphere_surface",
+          "center": [
+            0,
+            0,
+            -36
+          ],
+          "radius": 85,
+          "tolerance": 0.6,
+          "polar_degrees": [
+            30,
+            45,
+            60
+          ],
+          "azimuth_degrees": [
+            45,
+            90,
+            135,
+            225,
+            270,
+            315
+          ]
+        }
+      ],
+      "depth_basis": {
+        "kind": "hidden_lines",
+        "view": "front",
+        "observation": "正视图中的 R85 隐藏内轮廓和接管内壁虚线用于判断内腔；与俯视口形共同核对，不把轴测图作为深度依据。"
+      }
+    },
+    {
+      "name": "偏置长圆接管通内腔",
+      "material": "void",
+      "extent": "through",
+      "evidence": [
+        {
+          "view": "front",
+          "observation": "左侧接管内壁向下连入球壳内腔；42 标注定位右端圆心，孔下不应保留底板。"
+        },
+        {
+          "view": "plan",
+          "observation": "外轮廓 R12、内孔 R8，两端圆心距19。"
+        },
+        {
+          "view": "isometric",
+          "observation": "偏置接管顶面呈完整长圆开口；轴测图只支持口形，深度结合正视内轮廓确定。"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "内孔端半径",
+          "value": 8,
+          "status": "stated",
+          "view": "plan"
+        },
+        {
+          "name": "端圆心距",
+          "value": 19,
+          "status": "stated",
+          "view": "plan"
+        },
+        {
+          "name": "右端圆心距主轴",
+          "value": 42,
+          "status": "stated",
+          "view": "front"
+        }
+      ],
+      "checks": [
+        {
+          "name": "长圆孔 x=-66 y=0 贯通",
+          "kind": "clear_line",
+          "start": [
+            -66,
+            0,
+            -5
+          ],
+          "end": [
+            -66,
+            0,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-61 y=0 贯通",
+          "kind": "clear_line",
+          "start": [
+            -61,
+            0,
+            -5
+          ],
+          "end": [
+            -61,
+            0,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-55 y=0 贯通",
+          "kind": "clear_line",
+          "start": [
+            -55,
+            0,
+            -5
+          ],
+          "end": [
+            -55,
+            0,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-49 y=0 贯通",
+          "kind": "clear_line",
+          "start": [
+            -49,
+            0,
+            -5
+          ],
+          "end": [
+            -49,
+            0,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-42 y=0 贯通",
+          "kind": "clear_line",
+          "start": [
+            -42,
+            0,
+            -5
+          ],
+          "end": [
+            -42,
+            0,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-37 y=0 贯通",
+          "kind": "clear_line",
+          "start": [
+            -37,
+            0,
+            -5
+          ],
+          "end": [
+            -37,
+            0,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-61 y=5 贯通",
+          "kind": "clear_line",
+          "start": [
+            -61,
+            5,
+            -5
+          ],
+          "end": [
+            -61,
+            5,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-61 y=-5 贯通",
+          "kind": "clear_line",
+          "start": [
+            -61,
+            -5,
+            -5
+          ],
+          "end": [
+            -61,
+            -5,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-42 y=5 贯通",
+          "kind": "clear_line",
+          "start": [
+            -42,
+            5,
+            -5
+          ],
+          "end": [
+            -42,
+            5,
+            70
+          ]
+        },
+        {
+          "name": "长圆孔 x=-42 y=-5 贯通",
+          "kind": "clear_line",
+          "start": [
+            -42,
+            -5,
+            -5
+          ],
+          "end": [
+            -42,
+            -5,
+            70
+          ]
+        }
+      ],
+      "depth_basis": {
+        "kind": "hidden_lines",
+        "view": "front",
+        "observation": "正视图中的 R85 隐藏内轮廓和接管内壁虚线用于判断内腔；与俯视口形共同核对，不把轴测图作为深度依据。"
+      }
+    }
+  ]
+}
