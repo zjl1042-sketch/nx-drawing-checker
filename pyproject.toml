@@ -14,4 +14,3 @@ nx-drawing-checker = "nx_drawing_checker:main"
 
 [tool.setuptools]
 py-modules = ["nx_drawing_checker", "nx_preview"]
-
