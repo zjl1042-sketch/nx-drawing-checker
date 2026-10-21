@@ -47,7 +47,9 @@ def run_demo():
         for name, mesh, expected in (("blocked", blocked, 1), ("clear", clear, 0)):
             stl = root / f"{name}.stl"
             write_stl(stl, mesh)
-            actual = main(["check-stl", str(case_path), str(stl)])
+            # Save UTF-8 reports so Windows console encodings do not affect exit codes.
+            actual = main(["check-stl", str(case_path), str(stl),
+                           "--report", str(root / f"{name}-report.md")])
             if actual != expected:
                 raise RuntimeError(f"{name}: expected exit {expected}, got {actual}")
             print(f"DEMO {name}: expected={expected}, actual={actual}")
