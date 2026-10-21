@@ -6,8 +6,14 @@ build-backend = "setuptools.build_meta"
 name = "nx-drawing-checker"
 version = "0.1.0"
 description = "Evidence-led review of mechanical drawings and mesh checks for NX parts"
+readme = "README.en.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.10"
 dependencies = ["Pillow>=10"]
+
+[project.urls]
+Repository = "https://github.com/zjl1042-sketch/nx-drawing-checker"
+Issues = "https://github.com/zjl1042-sketch/nx-drawing-checker/issues"
 
 [project.scripts]
 nx-drawing-checker = "nx_drawing_checker:main"
