@@ -1,5 +1,7 @@
 # NX Drawing Checker
 
+[English](README.en.md) · [可复现演示](examples/README.md) · [贡献指南](CONTRIBUTING.md) · [MIT License](LICENSE)
+
 从机械零件图建立可追溯的特征判断，并用模型几何检查通孔、空腔与内壁。
 
 本项目用于解决两类实际误读：把贯通开窗做成带底凹槽；让外部凸台或立板伸入本应光滑的球面内腔。流程是 **提取原图 → 分视图 → 写出判断依据 → 建模 → 剖切及几何验证**。
@@ -17,6 +19,17 @@ source .venv/bin/activate
 ```
 
 Windows 下使用 `.venv\Scripts\python.exe`，并通过 `.venv\Scripts\nx-drawing-checker.exe` 调用命令。本工具仅依赖 Pillow；NX 日志需要在安装了 NX 的机器中执行。
+
+## 无需 NX 的公开演示
+
+安装后运行：
+
+```bash
+python examples/synthetic_demo.py
+```
+
+演示生成合成封闭网格，验证“阻挡贯通线时拒绝，移除阻挡后通过”，不需要私有图纸或 NX。
+合成案例不代表真实工程读图准确率；具体说明见 [examples/README.md](examples/README.md)。
 
 ## 使用
 
@@ -89,3 +102,9 @@ python -m unittest discover -s tests -v
 测试包含：原图字节保持和文档顺序、非法裁剪、缺少剖视依据的拒绝、贯通空间的错误底板检测、内腔中的多余实体检测，以及 ASCII/二进制 STL 读取。
 
 本次实机结果和修订内容见 [VALIDATION.md](VALIDATION.md)，详细检查见 [reports/part-2.md](reports/part-2.md) 与 [reports/part-3.md](reports/part-3.md)。未标尺寸、全部制造公差和未采样区域仍需单独核对。
+
+## 参与与许可
+
+欢迎使用中文或英文提交可复现问题与改进，见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+维护方向见 [ROADMAP.md](ROADMAP.md)。项目处于早期阶段，路线图不代表已完成功能。
+代码采用 [MIT 许可证](LICENSE)。Siemens NX 是独立的专有软件，本项目不隶属于 Siemens，也未获得其背书。
